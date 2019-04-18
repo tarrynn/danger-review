@@ -2,7 +2,7 @@ module Danger
   class DangerReview < Plugin
 
     def check
-      "check here"
+      "none"
     end
 
   end
