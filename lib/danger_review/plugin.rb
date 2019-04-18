@@ -2,7 +2,7 @@ module Danger
   class DangerReview < Plugin
 
     def check
-      puts "check"
+      "check here"
     end
 
   end
