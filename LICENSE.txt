@@ -1,4 +1,4 @@
-Copyright (c) 2017 RestlessThinker <penaflor@gmail.com>
+Copyright (c) 2019 tarrynn <catalin.gheonea@gmail.com>
 
 MIT License
 

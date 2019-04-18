@@ -1,6 +1,6 @@
 # danger-review
 
-A [Danger](https://github.com/danger/danger) plugin
+A [Danger](https://github.com/danger/danger) plugin to check if a branch has an associated ec2 instance running through tags
 
 ## Installation
 
