@@ -3,9 +3,7 @@ module Danger
 
     def check(branch = nil)
       return if branch.nil?
-      puts "env var is #{review_bootup}"
-      puts "aws command output is #{aws_command(branch)}"
-      markdown(branch) if review_bootup || aws_command(branch)
+      markdown(branch) if review_bootup == "true" || aws_command(branch) == 1
     end
 
     private
