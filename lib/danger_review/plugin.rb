@@ -3,24 +3,23 @@ module Danger
 
     def check(branch = nil)
       return if branch.nil?
-      @branch = branch
-      check_review
+      puts "env var is #{review_bootup}"
+      puts "aws command output is #{aws_command(branch)}"
+      markdown(branch) if review_bootup || aws_command(branch)
     end
 
     private
 
-    def check_review
-      markdown if ENV['REVIEW_ENVIRONMENT'] == "true"
-      markdown if aws_command
+    def aws_command(branch)
+      `aws ec2 describe-instances --filters 'Name=tag:branch,Values=#{branch}' | jq .Reservations | jq 'length'`.gsub("\n","").to_i
     end
 
-    def aws_command
-      `aws ec2 describe-instances --filters 'Name=tag:branch,Values=#{@branch}' | jq .Reservations | jq 'length'`.gsub("\n","").to_i
+    def markdown(branch)
+      "[Available here](https://#{branch}.review.bergamotte.com)"
     end
 
-    def markdown
-      "[Available here](https://#{@branch}.review.bergamotte.com)"
+    def review_bootup
+      ENV['REVIEW_ENVIRONMENT'] || false
     end
-
   end
 end
